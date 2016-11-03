@@ -35,10 +35,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by MOON on 10/3/2016.
+ * Created by MOON on 11/3/2016.
  */
-
-public class TopFragment extends Fragment {
+public class EntertainmentFragment extends Fragment {
     private Gson gson;
     private View view;
     private ListView listView;
@@ -63,7 +62,7 @@ public class TopFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Parameters params = new Parameters();
-        params.add("type","top");
+        params.add("type","yule");
         //params.add("ip", "www.juhe.cn");
         //params.add("dtype", "json");
         /**
@@ -179,9 +178,9 @@ public class TopFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             final int selectID = position;
             //自定义视图
-            ListItemView listItemView = null;
+            MyAdapter.ListItemView listItemView = null;
             if (convertView == null){
-                listItemView = new ListItemView();
+                listItemView = new MyAdapter.ListItemView();
                 convertView = listContainer.inflate(R.layout.list_item,null);
 
                 listItemView.pic = (ImageView) convertView.findViewById(R.id.pic);
@@ -190,7 +189,7 @@ public class TopFragment extends Fragment {
 
                 convertView.setTag(listItemView);
             }else {
-                listItemView = (ListItemView) convertView.getTag();
+                listItemView = (MyAdapter.ListItemView) convertView.getTag();
 
             }
             //handler.handleMessage();

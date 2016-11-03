@@ -20,7 +20,7 @@ import com.kiplening.threadtest.util.PagerSlidingTabStrip;
 public class MainFragment extends Fragment {
     private View view;
     private static String[] TITLES;
-    private static String[] URLS = new String[]{"", "", "", ""};
+    private static String[] URLS = new String[]{"", "", "", "",""};
 
     private PagerSlidingTabStrip tabs;
     private ViewPager pager;
@@ -58,10 +58,31 @@ public class MainFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                //return new TaskListFragment();
+                return new TopFragment();
             }
             if (position == 1) {
-                //return new HistoryFragment();
+                return new ScienceFragment();
+            }
+            if (position == 2) {
+                return new EntertainmentFragment();
+            }
+            if (position == 3) {
+                return new SocietyFragment();
+            }
+            if (position == 4) {
+                return new InlandFragment();
+            }
+            if (position == 5) {
+                return new SportFragment();
+            }
+            if (position == 6) {
+                return new MilitaryFragment();
+            }
+            if (position == 7) {
+                return new CaijingFragment();
+            }
+            if (position == 8) {
+                return new FashionFragment();
             }
             return new TopFragment();
         }
