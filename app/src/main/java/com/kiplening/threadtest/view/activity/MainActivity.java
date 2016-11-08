@@ -1,4 +1,4 @@
-package com.kiplening.threadtest.view;
+package com.kiplening.threadtest.view.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;

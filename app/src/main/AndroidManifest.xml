@@ -20,14 +20,14 @@
         <meta-data
             android:name="com.thinkland.juheapi.openid"
             android:value="JHc68f8d87cbb791c9f336523f2820afb0" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.NewsActivity"/>
+        <activity android:name=".view.activity.NewsActivity"/>
     </application>
 
 </manifest>

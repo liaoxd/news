@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
 
-    tools:context="com.kiplening.threadtest.view.MainActivity">
+    tools:context="com.kiplening.threadtest.view.activity.MainActivity">
     <FrameLayout
         android:id="@+id/fragment"
         android:layout_width="fill_parent"
