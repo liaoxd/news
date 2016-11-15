@@ -19,6 +19,7 @@ public class JuheJsonData{
         return result;
     }
 
+
     public void setResult(Result result) {
         this.result = result;
     }
