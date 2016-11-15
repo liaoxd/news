@@ -3,10 +3,11 @@ package com.kiplening.threadtest.util;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.mylibrary.utils.JsonUtils;
 import com.google.gson.Gson;
 import com.kiplening.threadtest.bean.JuheJsonData;
 import com.kiplening.threadtest.bean.NewsBean;
-import com.kiplening.threadtest.view.fragmentInterface.FragmentPresenter;
+import com.kiplening.threadtest.view.fragmentInterface.fragmentPresenter;
 import com.thinkland.sdk.android.DataCallBack;
 import com.thinkland.sdk.android.JuheData;
 import com.thinkland.sdk.android.Parameters;
@@ -19,13 +20,11 @@ import java.util.List;
 
 public class JuheGetNews {
     private Context context;
-    private Gson gson;
     private List<NewsBean> data;
-    private FragmentPresenter presenter;
+    private fragmentPresenter presenter;
 
-    public JuheGetNews(Context context,FragmentPresenter presenter){
+    public JuheGetNews(Context context,fragmentPresenter presenter){
         this.context = context;
-        this.data = data;
         this.presenter = presenter;
     }
 
@@ -52,9 +51,8 @@ public class JuheGetNews {
                     public void onSuccess(int statusCode, String responseString) {
                         // TODO Auto-generated method stub
 
-                        gson = new Gson();
-                        JuheJsonData juheJsonData = gson.fromJson(responseString,JuheJsonData.class);
-                        data = juheJsonData.getResult().getData();
+                        JuheJsonData mJuheJsonData = JsonUtils.deserialize(responseString,JuheJsonData.class);
+                        data = mJuheJsonData.getResult().getData();
                         //presenter.onFinish();
                     }
 
@@ -86,5 +84,4 @@ public class JuheGetNews {
                     }
                 });
     }
-
 }

@@ -18,7 +18,7 @@ import com.kiplening.threadtest.R;
 import com.kiplening.threadtest.bean.NewsBean;
 import com.kiplening.threadtest.util.JuheGetNews;
 import com.kiplening.threadtest.view.activity.NewsActivity;
-import com.kiplening.threadtest.view.fragmentInterface.FragmentPresenter;
+import com.kiplening.threadtest.view.fragmentInterface.fragmentPresenter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by MOON on 11/3/2016.
  */
-public class EntertainmentFragment extends Fragment implements FragmentPresenter{
+public class EntertainmentFragment extends Fragment implements fragmentPresenter {
     private Gson gson;
     private View view;
     private ListView listView;
