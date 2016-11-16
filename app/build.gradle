@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
         applicationId "com.kiplening.threadtest"
-        minSdkVersion 14
-        targetSdkVersion 24
+        minSdkVersion 15
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
@@ -25,10 +25,11 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    compile 'com.google.code.gson:gson:+'
+
     compile 'com.jakewharton:butterknife:5.1.1'
     compile files('libs/juhe_sdk_v_2_6.jar')
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile project(path: ':mylibrary')
 }
