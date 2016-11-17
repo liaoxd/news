@@ -10,26 +10,43 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.kiplening.threadtest.R;
+import com.kiplening.threadtest.bean.SubNews;
+import com.kiplening.threadtest.common.MyApplication;
+import com.kiplening.threadtest.common.Setting;
+import com.kiplening.threadtest.util.JumpToActivity;
 import com.kiplening.threadtest.util.PagerSlidingTabStrip;
+import com.kiplening.threadtest.view.activity.SettingActivity;
+
+import java.util.List;
 
 /**
  * Created by MOON on 10/27/2016.
  */
 public class MainFragment extends Fragment {
     private View view;
-    private static String[] TITLES;
-    private static String[] URLS = new String[]{"", "", "", "",""};
+    private Setting setting;
+    private static List<SubNews> list;
 
     private PagerSlidingTabStrip tabs;
     private ViewPager pager;
+    private Button mButton;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.main_fragment_layout,container,false);
         pager = (ViewPager) view.findViewById(R.id.pager);
+        mButton = (Button) view.findViewById(R.id.change);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JumpToActivity.jump(getActivity(), SettingActivity.class);
+            }
+        });
+        setting = MyApplication.getSetting(getActivity());
         tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
         if (tabs == null)
             System.out.println("获取不到tabs!");
@@ -39,7 +56,8 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        TITLES = getResources().getStringArray(R.array.news_titles);
+        //TITLES = getResources().getStringArray(R.array.news_titles);
+        list = setting.getmSubList();
 
         FragmentPagerAdapter adapter = new NewsAdapter(getChildFragmentManager());
         pager.setAdapter(adapter);
@@ -89,12 +107,14 @@ public class MainFragment extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return TITLES[position % TITLES.length];
+            //return TITLES[position % TITLES.length];
+            return list.get(position % list.size()).getName();
         }
 
         @Override
         public int getCount() {
-            return TITLES.length;
+            //return TITLES.length;
+            return list.size();
         }
     }
 }

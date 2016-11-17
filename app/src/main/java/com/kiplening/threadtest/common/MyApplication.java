@@ -2,7 +2,6 @@ package com.kiplening.threadtest.common;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import com.example.mylibrary.utils.MySharedPrefrences;
 import com.thinkland.sdk.android.JuheSDKInitializer;
@@ -15,7 +14,14 @@ public class MyApplication extends Application {
     private static Setting setting;
     public static Setting getSetting(Context context){
         MySharedPrefrences mySharedPrefrences = new MySharedPrefrences(context,"app");
-        return mySharedPrefrences.load("setting",Setting.class);
+        Setting result = mySharedPrefrences.load("setting",Setting.class);
+        if (result != null){
+            setting = result;
+        }
+        else{
+            setting = new Setting();
+        }
+        return setting;
     }
     @Override
     public void onCreate() {

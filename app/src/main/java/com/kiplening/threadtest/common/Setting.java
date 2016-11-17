@@ -2,6 +2,7 @@ package com.kiplening.threadtest.common;
 
 import com.kiplening.threadtest.bean.SubNews;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,14 @@ public class Setting {
     private String userName;
     private String passWord;
     private boolean isLoadPic;
+
+    public Setting(){
+        this.isLoadPic = true;
+        this.mSubList = new ArrayList<>();
+        for (int i = 1; i < 10; i++) {
+            mSubList.add(new SubNews(i));
+        }
+    }
 
     public List<SubNews> getmSubList() {
         return mSubList;
