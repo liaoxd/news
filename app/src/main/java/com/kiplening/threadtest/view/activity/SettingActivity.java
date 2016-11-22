@@ -6,6 +6,7 @@ import com.example.mylibrary.activity.BaseActivity;
 
 /**
  * Created by MOON on 11/16/2016.
+ * 用于实现新闻栏目的编辑
  */
 public class SettingActivity extends BaseActivity{
     @Override

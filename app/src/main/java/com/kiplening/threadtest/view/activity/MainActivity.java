@@ -1,5 +1,6 @@
 package com.kiplening.threadtest.view.activity;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +8,12 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.mylibrary.activity.BaseActivity;
 import com.kiplening.threadtest.R;
@@ -18,30 +25,61 @@ import java.io.IOException;
 public class MainActivity extends BaseActivity {
 
     private FragmentManager fragmentManager;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+    private ListView mDrawerList;
+    private Toolbar toolbar;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
 
 
     @Override
     protected void initVariables() {
+        //ivRunningMan = (ImageView) findViewById(R.id.iv_main);
 
+        //lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
     }
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new MainFragment();
         fragmentTransaction.add(R.id.fragment, fragment).commit();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        toolbar = (Toolbar) findViewById(R.id.tl_custom);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                //mAnimationDrawable.stop();
+            }
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                //mAnimationDrawable.start();
+            }
+        };
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     @Override
     protected void loadData() {
 
+        toolbar.setTitle("Toolbar");//设置Toolbar标题
+        toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //创建返回键，并实现打开关/闭监听
+
+        //设置菜单列表
+        //arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lvs);
+        //lvLeftMenu.setAdapter(arrayAdapter);
     }
 
     final private Handler handler = new Handler() {
@@ -77,6 +115,5 @@ public class MainActivity extends BaseActivity {
         thread.start();
         thread = null;
     }
-
 
 }
