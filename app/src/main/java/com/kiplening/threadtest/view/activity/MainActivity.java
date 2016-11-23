@@ -33,23 +33,31 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initVariables() {
-        //ivRunningMan = (ImageView) findViewById(R.id.iv_main);
 
-        //lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
     }
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.drawer_layout);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //super.onCreate(savedInstanceState);
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new MainFragment();
         fragmentTransaction.add(R.id.fragment, fragment).commit();
-        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    protected void loadData() {
+
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.tl_custom);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar.setTitle("Toolbar");//设置Toolbar标题
+        toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close) {
             @Override
@@ -65,16 +73,6 @@ public class MainActivity extends BaseActivity {
         };
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-    }
-
-    @Override
-    protected void loadData() {
-
-        toolbar.setTitle("Toolbar");//设置Toolbar标题
-        toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //创建返回键，并实现打开关/闭监听
 
         //设置菜单列表
