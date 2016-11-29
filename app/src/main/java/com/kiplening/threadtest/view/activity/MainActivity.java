@@ -12,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.mylibrary.activity.BaseActivity;
@@ -39,17 +38,17 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initViews(Bundle savedInstanceState) {
         //super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new MainFragment();
         fragmentTransaction.add(R.id.fragment, fragment).commit();
-
     }
 
     @Override
     protected void loadData() {
 
-        setContentView(R.layout.activity_main);
+
         toolbar = (Toolbar) findViewById(R.id.tl_custom);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar.setTitle("Toolbar");//设置Toolbar标题

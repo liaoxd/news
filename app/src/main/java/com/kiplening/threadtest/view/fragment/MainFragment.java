@@ -67,6 +67,13 @@ public class MainFragment extends Fragment {
         pager.setPageMargin(pageMargin);
 
         tabs.setViewPager(pager);
+
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JumpToActivity.jump(getActivity(),SettingActivity.class);
+            }
+        });
     }
     class NewsAdapter extends FragmentPagerAdapter {
         public NewsAdapter(FragmentManager fm) {
