@@ -115,7 +115,7 @@ public class MilitaryFragment extends Fragment implements fragmentPresenter {
             MyAdapter.ListItemView listItemView = null;
             if (convertView == null){
                 listItemView = new MyAdapter.ListItemView();
-                convertView = listContainer.inflate(R.layout.list_item,null);
+                convertView = listContainer.inflate(R.layout.list_item_news,null);
 
                 listItemView.pic = (ImageView) convertView.findViewById(R.id.pic);
                 listItemView.title = (TextView) convertView.findViewById(R.id.title);

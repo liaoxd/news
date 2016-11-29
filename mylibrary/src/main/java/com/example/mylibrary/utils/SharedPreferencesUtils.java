@@ -22,7 +22,7 @@ public class SharedPreferencesUtils {
      * @param <T>
      * @return
      */
-    public <T> T getAll(Class<T> target, String type){
+    public <T> T get(Class<T> target, String type){
         String temp = mSharedPreferences.getString(type,"");
         return JsonUtils.deserialize(temp,target);
     }
@@ -33,7 +33,7 @@ public class SharedPreferencesUtils {
      * @param type
      * @param <T>
      */
-    public <T> void saveAll(Class<T> target, String type){
+    public <T> void save(Class<T> target, String type){
         SharedPreferences.Editor mEditor = mSharedPreferences.edit();
         mEditor.putString("all",JsonUtils.serialize(target));
         mEditor.commit();

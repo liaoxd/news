@@ -37,7 +37,7 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.main_fragment_layout,container,false);
+        view = inflater.inflate(R.layout.fragment_layout_main,container,false);
         pager = (ViewPager) view.findViewById(R.id.pager);
         mButton = (Button) view.findViewById(R.id.change);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -82,31 +82,33 @@ public class MainFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            if (position == 0) {
+            int subNewsID;
+            subNewsID = list.get(position).getId();
+            if (subNewsID == 1) {
                 return new TopFragment();
             }
-            if (position == 1) {
+            if (subNewsID == 2) {
                 return new ScienceFragment();
             }
-            if (position == 2) {
+            if (subNewsID == 3) {
                 return new EntertainmentFragment();
             }
-            if (position == 3) {
+            if (subNewsID == 4) {
                 return new SocietyFragment();
             }
-            if (position == 4) {
+            if (subNewsID == 5) {
                 return new InlandFragment();
             }
-            if (position == 5) {
+            if (subNewsID == 6) {
                 return new SportFragment();
             }
-            if (position == 6) {
+            if (subNewsID == 7) {
                 return new MilitaryFragment();
             }
-            if (position == 7) {
+            if (subNewsID == 8) {
                 return new CaijingFragment();
             }
-            if (position == 8) {
+            if (subNewsID == 9) {
                 return new FashionFragment();
             }
             return new TopFragment();
