@@ -8,6 +8,7 @@ import com.example.mylibrary.utils.SharedPreferencesUtils;
 import com.kiplening.threadtest.bean.SubNews;
 import com.thinkland.sdk.android.JuheSDKInitializer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,15 +18,17 @@ import java.util.List;
 public class MyApplication extends Application {
     private static Setting setting;
     public static List<SubNews> mSubNewsList;
-    public static void init(Context context){
+    public static List<SubNews> getList(Context context){
         SharedPreferencesUtils mSharedPreferencesUtils = new SharedPreferencesUtils(context,"subNews");
         mSubNewsList = mSharedPreferencesUtils.get(List.class, "added");
-        if (mSubNewsList.size() == 0){
+        if (mSubNewsList == null){
+            mSubNewsList = new ArrayList<>();
             for (int i = 1; i < 10; i++) {
                 mSubNewsList.add(new SubNews(i));
             }
             mSharedPreferencesUtils.save(List.class,"added");
         }
+        return mSubNewsList;
     }
     public static Setting getSetting(Context context){
         SharedPreferencesUtils mSharedPrefrencesUtils = new SharedPreferencesUtils(context,"app");

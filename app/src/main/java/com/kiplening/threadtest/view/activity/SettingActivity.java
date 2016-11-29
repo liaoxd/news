@@ -38,7 +38,7 @@ public class SettingActivity extends BaseActivity{
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.activity_setting);
         mListView = (ListView) findViewById(R.id.type_list);
-        mListView.setAdapter(new SubAdapter(this, MyApplication.mSubNewsList));
+        mListView.setAdapter(new SubAdapter(this, MyApplication.getList(this)));
 
     }
 
